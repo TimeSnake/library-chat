@@ -35,12 +35,13 @@ public class ExTextColor implements TextColor {
             NamedTextColor.YELLOW);
     public static final ExTextColor WHITE = new ExTextColor('f', NamedTextColor.WHITE);
     public static final ExTextColor PUBLIC = new ExTextColor('p', "public", NamedTextColor.WHITE);
+    public static final ExTextColor RESET = new ExTextColor('r', "reset", NamedTextColor.WHITE);
 
     public static final List<ExTextColor> VALUES = List.of(BLACK, QUICK_INFO, DARK_BLUE, DARK_GREEN,
             DARK_AQUA, DARK_RED,
             DARK_PURPLE, GOLD, GRAY, VALUE, DARK_GRAY, BLUE, GREEN, AQUA, RED, WARNING,
             LIGHT_PURPLE, YELLOW, PERSONAL,
-            WHITE, PUBLIC);
+            WHITE, PUBLIC, RESET);
 
     public static final Index<String, ExTextColor> NAMES = Index.create(ExTextColor::getName,
             VALUES);
@@ -65,6 +66,10 @@ public class ExTextColor implements TextColor {
 
     public char getToken() {
         return token;
+    }
+
+    public String getLegacyColor() {
+        return "§" + this.getToken();
     }
 
     public String getName() {
