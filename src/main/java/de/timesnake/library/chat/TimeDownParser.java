@@ -62,6 +62,14 @@ public class TimeDownParser {
         return parse2Component(component, nextText, nextColor, decorations);
     }
 
+    public String parse2Legacy(String text) {
+        for (ExTextColor c : ExTextColor.CUSTOM_VALUES) {
+            text = text.replace("§" + c.getToken(), "§" + c.getLegacyToken());
+        }
+        return text;
+    }
+
+
     protected int getNextTokenKeyIndex(String text, int startIndex) {
         int tokenKeyIndex = startIndex - 1;
 
