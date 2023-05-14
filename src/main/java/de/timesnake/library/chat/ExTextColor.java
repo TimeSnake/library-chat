@@ -84,7 +84,7 @@ public class ExTextColor implements TextColor {
     }
 
     public String getLegacyToken() {
-        return "§" + this.legacyToken;
+        return String.valueOf(this.legacyToken);
     }
 
     public String getName() {
