@@ -6,12 +6,12 @@ package de.timesnake.library.chat;
 
 public class TimeDownParseException extends RuntimeException {
 
-    public TimeDownParseException() {
+  public TimeDownParseException() {
 
-    }
+  }
 
-    public TimeDownParseException(String message) {
-        super(message);
-    }
+  public TimeDownParseException(String message) {
+    super(message);
+  }
 
 }
