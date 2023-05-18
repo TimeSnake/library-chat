@@ -1,18 +1,18 @@
 repositories {
-    mavenLocal()
-    mavenCentral()
-    maven {
-        url = uri 'https://repo.maven.apache.org/maven2/'
-    }
+  mavenLocal()
+  mavenCentral()
+  maven {
+    url = uri 'https://repo.maven.apache.org/maven2/'
+  }
 }
 
 dependencies {
 
-    implementation project.adventure_api
-    implementation 'net.kyori:adventure-text-serializer-legacy:4.12.0'
-    implementation 'net.kyori:adventure-text-serializer-plain:4.12.0'
+  implementation project.adventure_api
+  implementation 'net.kyori:adventure-text-serializer-legacy:4.12.0'
+  implementation 'net.kyori:adventure-text-serializer-plain:4.12.0'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
 }
 
 group = project.group
@@ -20,5 +20,5 @@ version = '1.0-SNAPSHOT'
 archivesBaseName = 'library-chat'
 
 test {
-    useJUnitPlatform()
+  useJUnitPlatform()
 }
