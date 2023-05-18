@@ -1,3 +1,8 @@
+group = project.group
+version = '1.0-SNAPSHOT'
+archivesBaseName = 'library-chat'
+var projectId = 59
+
 repositories {
   mavenLocal()
   mavenCentral()
@@ -15,10 +20,18 @@ dependencies {
   testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
 }
 
-group = project.group
-version = '1.0-SNAPSHOT'
-archivesBaseName = 'library-chat'
-
 test {
   useJUnitPlatform()
+}
+
+publishing {
+  repositories {
+    maven {
+      url getDeployUrl(projectId)
+      credentials {
+        username = deploy_token_name
+        password = deploy_token_key
+      }
+    }
+  }
 }
