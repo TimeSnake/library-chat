@@ -13,13 +13,20 @@ import java.util.List;
 public class TimeDownParser {
 
 	public Component parse2Component(String text) {
-		return parse2Component(Component.empty(), text, ExTextColor.WHITE, new LinkedList<>());
+		return parse2Component(text, '§');
 	}
 
-	protected Component parse2Component(Component component, String text, ExTextColor currentColor,
-																			List<TextDecoration> decorations) {
+	public Component parse2Component(String text, char specialToken) {
+		return parse2Component(Component.empty(), text, specialToken, ExTextColor.WHITE, new LinkedList<>());
+	}
 
-		int tokenIndex = getNextTokenKeyIndex(text, 0);
+	protected Component parse2Component(Component component, String text, char specialToken, ExTextColor currentColor,
+																			List<TextDecoration> decorations) {
+		if (text == null) {
+			return null;
+		}
+
+		int tokenIndex = getNextTokenKeyIndex(text, 0, specialToken);
 
 		if (tokenIndex == -1) {
 			return component.append(Component.text(text.replace("\\", ""), currentColor)
@@ -51,26 +58,30 @@ public class TimeDownParser {
 				nextColor = ExTextColor.TOKENS.value(token);
 				decorations.clear();
 			}
-		} while (text.charAt(++tokenIndex) == '§');
+		} while (text.charAt(++tokenIndex) == specialToken);
 
 		String nextText = text.substring(tokenIndex);
 
-		return parse2Component(component, nextText, nextColor, decorations);
+		return parse2Component(component, nextText, specialToken, nextColor, decorations);
 	}
 
 	public String parse2Legacy(String text) {
+		return parse2Legacy(text, '§', '§');
+	}
+
+	public String parse2Legacy(String text, char srcSpecialToken, char resSpecialToken) {
 		for (ExTextColor c : ExTextColor.CUSTOM_VALUES) {
-			text = text.replace("§" + c.getToken(), "§" + c.getLegacyToken());
+			text = text.replace("" + srcSpecialToken + c.getToken(), resSpecialToken + c.getLegacyToken());
 		}
 		return text;
 	}
 
 
-	protected int getNextTokenKeyIndex(String text, int startIndex) {
+	protected int getNextTokenKeyIndex(String text, int startIndex, char specialToken) {
 		int tokenKeyIndex = startIndex - 1;
 
 		do {
-			tokenKeyIndex = text.indexOf('§', tokenKeyIndex + 1);
+			tokenKeyIndex = text.indexOf(specialToken, tokenKeyIndex + 1);
 			if (tokenKeyIndex >= text.length() + 1) {
 				tokenKeyIndex = -1;
 				break;
