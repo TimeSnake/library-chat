@@ -24,7 +24,7 @@ stages:
 
 build:
   stage: build
-  script: gradle --build-cache bootJar
+  script: gradle --build-cache assemble
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
