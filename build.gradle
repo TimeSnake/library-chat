@@ -3,18 +3,26 @@ plugins {
   id 'maven-publish'
 }
 
-group = project.group
+group = "de.timesnake"
 version = '1.1'
 var projectId = 59
 
 repositories {
   mavenLocal()
   mavenCentral()
+  maven {
+    url "https://git.timesnake.de/api/v4/groups/7/-/packages/maven"
+    name "TimeSnake"
+    credentials {
+      username = timesnakeUser
+      password = timesnakePassword
+    }
+  }
 }
 
 dependencies {
 
-  implementation project.adventure_api
+  implementation "net.kyori:adventure-api:4.11.0"
   implementation 'net.kyori:adventure-text-serializer-legacy:4.12.0'
   implementation 'net.kyori:adventure-text-serializer-plain:4.12.0'
 
@@ -28,12 +36,14 @@ test {
 publishing {
   repositories {
     maven {
-        url "https://git.timesnake.de/api/v4/projects/" + projectId + "/packages/maven"
-      credentials {
-          username = timesnakeDeployUser
-          password = timesnakeDeployKey
+      url "https://git.timesnake.de/api/v4/projects/" + projectId + "/packages/maven"
+      credentials(HttpHeaderCredentials) {
+        name = "Job-Token"
+        value = System.getenv("CI_JOB_TOKEN")
       }
-
+      authentication {
+        header(HttpHeaderAuthentication)
+      }
     }
   }
 
