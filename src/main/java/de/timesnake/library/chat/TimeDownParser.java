@@ -71,7 +71,7 @@ public class TimeDownParser {
 
 	public String parse2Legacy(String text, char srcSpecialToken, char resSpecialToken) {
 		for (ExTextColor c : ExTextColor.CUSTOM_VALUES) {
-			text = text.replace("" + srcSpecialToken + c.getToken(), resSpecialToken + c.getLegacyToken());
+			text = text.replace("" + srcSpecialToken + c.getToken(), "" + resSpecialToken + c.getLegacyToken());
 		}
 		return text;
 	}
