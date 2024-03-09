@@ -4,10 +4,11 @@
 
 package de.timesnake.library.chat;
 
-import java.util.List;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.util.Index;
+
+import java.util.List;
 
 public class ExTextColor implements TextColor {
 
@@ -83,12 +84,16 @@ public class ExTextColor implements TextColor {
     return token;
   }
 
-  public String getLegacyToken() {
-    return String.valueOf(this.legacyToken);
+  public char getLegacyToken() {
+    return this.legacyToken;
   }
 
   public String getName() {
     return name;
+  }
+
+  public NamedTextColor getColor() {
+    return color;
   }
 
   @Override
