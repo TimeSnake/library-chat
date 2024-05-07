@@ -146,11 +146,6 @@ public interface Chat {
     return ChatColor.DARK_AQUA + plugin.getName() + getSplitterString();
   }
 
-  @Deprecated
-  static String getMessageCodeString(String codeType, int code, Plugin plugin) {
-    return "(Code: " + codeType + code + " " + plugin.getCode() + ")";
-  }
-
   static String getTimeString(Integer timeInSec) {
     return getTimeString(Duration.ofSeconds(timeInSec));
   }
