@@ -31,10 +31,6 @@ dependencies {
   testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
 }
 
-test {
-  useJUnitPlatform()
-}
-
 publishing {
   repositories {
     maven {
@@ -56,17 +52,20 @@ publishing {
   }
 }
 
-tasks.withType(JavaCompile).configureEach {
-  options.encoding = 'UTF-8'
-  options.release = 21
+tasks {
+  compileJava {
+    options.encoding = "UTF-8"
+    options.release = 21
+  }
 }
 
 java {
   toolchain {
     languageVersion = JavaLanguageVersion.of(21)
   }
+  withSourcesJar()
 }
 
-java {
-  withSourcesJar()
+test {
+  useJUnitPlatform()
 }
