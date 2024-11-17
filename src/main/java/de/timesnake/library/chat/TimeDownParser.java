@@ -58,7 +58,8 @@ public class TimeDownParser {
         nextColor = ExTextColor.TOKENS.value(token);
         decorations.clear();
       }
-    } while (text.charAt(++tokenIndex) == specialToken);
+      tokenIndex++;
+    } while (tokenIndex < text.length() && text.charAt(tokenIndex) == specialToken);
 
     String nextText = text.substring(tokenIndex);
 
