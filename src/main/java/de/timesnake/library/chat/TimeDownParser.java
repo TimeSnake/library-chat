@@ -51,8 +51,8 @@ public class TimeDownParser {
         if (decoration != null) {
           decorations.add(decoration.getDecoration());
         } else {
-          throw new TimeDownParseException(
-              "Invalid format-option '" + token + "' at index " + tokenIndex);
+          throw new TimeDownParseException("Invalid format-option '" + token + "' at index " + tokenIndex + " in text" +
+                                           " '" + text + "'");
         }
       } else {
         nextColor = ExTextColor.TOKENS.value(token);
