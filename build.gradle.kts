@@ -25,7 +25,8 @@ dependencies {
     implementation("net.kyori:adventure-text-serializer-legacy:4.12.0")
     implementation("net.kyori:adventure-text-serializer-plain:4.12.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 publishing {
