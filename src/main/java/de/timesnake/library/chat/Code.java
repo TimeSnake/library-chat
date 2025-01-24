@@ -4,12 +4,12 @@
 
 package de.timesnake.library.chat;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Code {
 
@@ -78,6 +78,17 @@ public class Code {
 
   public Reference getReference() {
     return reference;
+  }
+
+  @Override
+  public String toString() {
+    return "Code{" +
+           "type=" + type +
+           ", code=" + code +
+           ", description='" + description + '\'' +
+           ", permission='" + permission + '\'' +
+           ", command='" + command + '\'' +
+           '}';
   }
 
   public enum Type {
