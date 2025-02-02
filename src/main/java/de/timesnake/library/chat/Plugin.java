@@ -7,13 +7,10 @@ package de.timesnake.library.chat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Plugin {
+public final class Plugin {
 
-  /**
-   * @deprecated in favour of {@link #SERVER}
-   */
-  @Deprecated
-  public static final Plugin SYSTEM = new Plugin("System", "LES");
+  public static final Plugin GAME = new Plugin("Game", "LGM");
+
   public static final Plugin SERVER = new Plugin("Server", "LEB");
   public static final Plugin NETWORK = new Plugin("Network", "LEN");
 
@@ -28,7 +25,7 @@ public class Plugin {
 
   private final Map<String, Code> codeByString = new HashMap<>();
 
-  protected Plugin(String name, String code) {
+  public Plugin(String name, String code) {
     this.name = name;
     this.code = code;
   }
