@@ -26,6 +26,10 @@ public class ExTextColor implements TextColor {
       "highlighted_text", NamedTextColor.GOLD);
   public static final ExTextColor HIGHLIGHTED_VALUE = new ExTextColor('u', '9',
       "highlighted_value", NamedTextColor.BLUE);
+  public static final ExTextColor SUCCESS = new ExTextColor('y', 'a',
+      "success", NamedTextColor.GREEN);
+  public static final ExTextColor FAILED = new ExTextColor('z', 'c',
+      "failed", NamedTextColor.RED);
 
   public static final ExTextColor BLACK = new ExTextColor('0', NamedTextColor.BLACK);
   public static final ExTextColor DARK_BLUE = new ExTextColor('1', NamedTextColor.DARK_BLUE);
@@ -51,10 +55,10 @@ public class ExTextColor implements TextColor {
       DARK_AQUA, DARK_RED, HIGHLIGHTED_TEXT, HIGHLIGHTED_VALUE,
       DARK_PURPLE, GOLD, GRAY, VALUE, DARK_GRAY, BLUE, GREEN, AQUA, RED, WARNING,
       LIGHT_PURPLE, YELLOW, PERSONAL,
-      WHITE, PUBLIC, RESET);
+      WHITE, PUBLIC, RESET, SUCCESS, FAILED);
 
   public static final List<ExTextColor> CUSTOM_VALUES = List.of(PUBLIC, PERSONAL, WARNING,
-      VALUE, QUICK_INFO, HIGHLIGHTED_VALUE, HIGHLIGHTED_TEXT);
+      VALUE, QUICK_INFO, HIGHLIGHTED_VALUE, HIGHLIGHTED_TEXT, SUCCESS, FAILED);
 
   public static final Index<String, ExTextColor> NAMES = Index.create(ExTextColor::getName,
       VALUES);
