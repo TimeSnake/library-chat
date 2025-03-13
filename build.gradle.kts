@@ -7,7 +7,7 @@ plugins {
 
 
 group = "de.timesnake"
-version = "2.0.1"
+version = "3.0.0"
 var projectId = 59
 
 repositories {
@@ -21,12 +21,25 @@ repositories {
 }
 
 dependencies {
-    implementation("net.kyori:adventure-api:4.11.0")
-    implementation("net.kyori:adventure-text-serializer-legacy:4.12.0")
-    implementation("net.kyori:adventure-text-serializer-plain:4.12.0")
+    api("net.kyori:adventure-api:4.11.0")
+    api("net.kyori:adventure-text-serializer-legacy:4.12.0")
+    api("net.kyori:adventure-text-serializer-plain:4.12.0")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+configurations.all {
+    resolutionStrategy.dependencySubstitution.all {
+        requested.let {
+            if (it is ModuleComponentSelector && it.group == "de.timesnake") {
+                val targetProject = findProject(":${it.module}")
+                if (targetProject != null) {
+                    useTarget(targetProject)
+                }
+            }
+        }
+    }
 }
 
 publishing {
